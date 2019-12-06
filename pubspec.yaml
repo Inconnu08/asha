@@ -28,6 +28,7 @@ dependencies:
   firebase_analytics: ^5.0.2
   image_picker: ^0.6.2+1
   date_format: ^1.0.8
+  http:
 
 dev_dependencies:
   flutter_test:

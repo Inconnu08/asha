@@ -6,6 +6,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'package:http/http.dart' as http;
+
 class PickScreen extends StatefulWidget {
   static String routeName = '/image';
 
@@ -44,6 +46,11 @@ class _PickScreenState extends State<PickScreen> {
     databaseReference.child(key).set(value);
   }
 
+  Future<http.Response> predict() {
+    print('predicting...');
+    return http.get('http://35.244.41.56:5000');
+  }
+
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
     print(image);
@@ -67,6 +74,8 @@ class _PickScreenState extends State<PickScreen> {
     setEntry("last_url", url);
     setEntry("last_name", url);
     incrementLastEntry();
+
+    predict();
 
     setState(() {
       _image = image;
