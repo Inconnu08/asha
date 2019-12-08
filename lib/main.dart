@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import './screens/home.dart';
 import './screens/pick_image.dart';
+import 'screens/result.dart';
 
 void main() => runApp(MyApp());
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         CameraScreen.routeName: (ctx) => CameraScreen(),
         DiseaseScreen.routeName: (ctx) => DiseaseScreen(),
         PickScreen.routeName: (ctx) => PickScreen(),
+        ResultScreen.routeName: (ctx) =>  ResultScreen(),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (ctx) => HomeScreen());

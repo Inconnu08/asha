@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:asha/screens/result.dart';
 import 'package:date_format/date_format.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -35,6 +36,21 @@ class _PickScreenState extends State<PickScreen> {
     return entry;
   }
 
+  Future<String> getPrediction() async {
+    String result;
+    await FirebaseDatabase.instance
+        .reference()
+        .child('prediction')
+        .child('pred')
+        .once()
+        .then((DataSnapshot snapshot) {
+      print(snapshot.value);
+      result = snapshot.value;
+    });
+
+    return result;
+  }
+
   void incrementLastEntry() async {
     var entry = await getEntry("last_entry");
 
@@ -54,6 +70,36 @@ class _PickScreenState extends State<PickScreen> {
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
     print(image);
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Dialog(
+          elevation: 15,
+          backgroundColor: Colors.greenAccent[100],
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(15))),
+          child: Container(
+            height: 170,
+            child: new Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: new CircularProgressIndicator(),
+                ),
+                SizedBox(height: 20),
+                new Text("Processing",
+                    style: TextStyle(color: Colors.green[900])),
+                SizedBox(height: 30)
+              ],
+            ),
+          ),
+        );
+      },
+    );
 
     // creating reference to firebase storage
     // FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -76,6 +122,19 @@ class _PickScreenState extends State<PickScreen> {
     incrementLastEntry();
 
     predict();
+
+    print(getPrediction());
+
+    var p = await getPrediction();
+
+    new Future.delayed(new Duration(seconds: 3), () {
+      Navigator.pop(context); //pop dialog
+      Navigator.pushNamed(
+        context,
+        ResultScreen.routeName,
+        arguments: ResultArguments(p),
+      );
+    });
 
     setState(() {
       _image = image;

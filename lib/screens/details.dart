@@ -1,12 +1,12 @@
-import 'package:asha/models/corn.dart';
-import 'package:asha/screens/pick_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../models/apple.dart';
+import '../models/corn.dart';
 import '../models/disease.dart';
 import '../models/tomato.dart';
-import 'disease.dart';
+import '../screens/pick_image.dart';
+import './disease.dart';
 
 class DetailsScreen extends StatelessWidget {
   static String routeName = '/details';

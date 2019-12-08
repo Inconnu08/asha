@@ -4,6 +4,7 @@ class Tomato {
   static var diseases = [
     new Disease(
         name: 'Tomato mosaic virus',
+        code: 'Tomato___Tomato_mosaic_virus',
         image: 'Assets/img/tomato/Tomatomosaicvirus.jpg',
         desc:
             'Tomato mosaic virus is a serious and extremely contagious disease. It is also hard to identify, with symptoms varying wildly depending upon the variety and age of the infected plant, the strain of the virus, and environmental conditions. To make matters worse, it is very hard to distinguish from the closely related tobacco mosaic virus.',
