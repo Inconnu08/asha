@@ -141,6 +141,7 @@ class DiseaseScreen extends StatelessWidget {
                         tag: details.name,
                         child: Container(
                             decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25.0),
                                 image: DecorationImage(
                                     image: AssetImage(details.image),
                                     fit: BoxFit.fill)),
