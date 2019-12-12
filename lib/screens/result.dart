@@ -10,9 +10,7 @@ import '../models/corn.dart';
 class ResultScreen extends StatelessWidget {
   static String routeName = '/result';
 
-  var diseaseName = {
-    'Corn_(maize)___healthy': ''
-  };
+  var diseaseName = {'Corn_(maize)___healthy': ''};
   List<Disease> getReadAbleName(String plant) {
     switch (plant) {
       case 'Apple':
@@ -56,33 +54,31 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ResultArguments args = ModalRoute.of(context).settings.arguments;
-
     return Scaffold(
-        backgroundColor: Colors.green,
-        appBar: AppBar(
-            leading: IconButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: Icon(Icons.arrow_back_ios),
-              color: Colors.white,
-            ),
-            backgroundColor: Colors.transparent,
-            elevation: 0.0,
-            title: Text('Asha',
-                style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white)),
-            centerTitle: true),
-        body: ListView(children: [
+      backgroundColor: Colors.green,
+      appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: Icon(Icons.arrow_back_ios),
+            color: Colors.white,
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          title: Text('Asha',
+              style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white)),
+          centerTitle: true),
+      body: ListView(
+        children: [
           Container(
             height: MediaQuery.of(context).size.height,
             color: Colors.white,
-            child: args.title == 'NoLeafDetected__TryAgain'
-                ? Column(
+            child: Column(
                     children: <Widget>[
                       SizedBox(height: 100),
                       Image.asset('Assets/img/n.png', height: 250, width: 260),
@@ -90,14 +86,9 @@ class ResultScreen extends StatelessWidget {
                       Text('No leaf found. Try again!'),
                     ],
                   )
-                : Text(args.title),
           ),
-        ]));
+        ],
+      ),
+    );
   }
-}
-
-class ResultArguments {
-  String title;
-
-  ResultArguments(this.title);
 }

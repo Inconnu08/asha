@@ -1,13 +1,13 @@
 import 'dart:io';
 
+import 'package:asha/screens/disease.dart';
 import 'package:asha/screens/result.dart';
 import 'package:date_format/date_format.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 
 class PickScreen extends StatefulWidget {
   static String routeName = '/image';
@@ -58,12 +58,10 @@ class _PickScreenState extends State<PickScreen> {
   }
 
   void setEntry(String key, value) async {
-    print(value);
     databaseReference.child(key).set(value);
   }
 
   Future<http.Response> predict() {
-    print('predicting...');
     return http.get('http://35.244.41.56:5000');
   }
 
@@ -127,13 +125,19 @@ class _PickScreenState extends State<PickScreen> {
 
     var p = await getPrediction();
 
-    new Future.delayed(new Duration(seconds: 3), () {
+    new Future.delayed(new Duration(seconds: 1), () {
       Navigator.pop(context); //pop dialog
-      Navigator.pushNamed(
-        context,
-        ResultScreen.routeName,
-        arguments: ResultArguments(p),
-      );
+
+      p == 'NoLeafDetected__TryAgain'
+          ? Navigator.pushNamed(
+              context,
+              ResultScreen.routeName,
+            )
+          : Navigator.pushNamed(
+              context,
+              DiseaseScreen.routeName,
+              arguments: DiseaseArguments.withCode(p),
+            );
     });
 
     setState(() {

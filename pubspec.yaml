@@ -28,12 +28,17 @@ dependencies:
   firebase_analytics: ^5.0.2
   image_picker: ^0.6.2+1
   date_format: ^1.0.8
+  flutter_launcher_icons: ^0.7.4
   http:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+flutter_icons:
+  android: "launcher_icon" 
+  ios: false
+  image_path: "assets/img/logo.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -58,11 +63,12 @@ flutter:
    - Assets/img/apple/apple_black rot.JPG
    - Assets/img/apple/apple_cedar_rust.JPG
    - Assets/img/apple/apple_scab.JPG
+   - Assets/img/
    - Assets/img/tomato/Tomatomosaicvirus.jpg
-   - Assets/img/tomato/Tomatomosaicvirus.jpg
-   - Assets/img/tomato/Tomatomosaicvirus.jpg
-   - Assets/img/tomato/Tomatomosaicvirus.jpg
-   - Assets/img/tomato/Tomatomosaicvirus.jpg
+   - Assets/img/Potato/potato_Early_Blight.JPG
+   - Assets/img/Potato/Potato_Late_Blight.JPG
+   - Assets/img/corn/Cron_Cercospora_leaf_spot_gray_leaf_spot.JPG
+   - Assets/img/corn/cron_common_rust.JPG
    - Assets/img/tomato/Tomatomosaicvirus.jpg
    - Assets/img/tomato/Tomatomosaicvirus.jpg
    - Assets/img/tomato/Tomatomosaicvirus.jpg

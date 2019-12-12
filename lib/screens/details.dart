@@ -1,3 +1,5 @@
+import 'package:asha/models/grapes.dart';
+import 'package:asha/models/potato.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -11,7 +13,7 @@ import './disease.dart';
 class DetailsScreen extends StatelessWidget {
   static String routeName = '/details';
 
-  List<Disease> getDiseases(String plant) {
+  static List<Disease> getDiseases(String plant) {
     switch (plant) {
       case 'Apple':
         {
@@ -26,14 +28,15 @@ class DetailsScreen extends StatelessWidget {
         break;
 
       case 'Grapes':
+      case 'Grape':
         {
-          //statements;
+          return Grapes.diseases;
         }
         break;
 
       case 'Potato':
         {
-          //statements;
+          return Potato.diseases;
         }
         break;
 
@@ -49,7 +52,6 @@ class DetailsScreen extends StatelessWidget {
         }
         break;
     }
-    return Tomato.diseases;
   }
 
   @override
@@ -105,21 +107,22 @@ class DetailsScreen extends StatelessWidget {
                       height: MediaQuery.of(context).size.height - 100.0,
                       width: MediaQuery.of(context).size.width)),
               Positioned(
-                  top: 0.0,
-                  left: (MediaQuery.of(context).size.width / 2) - 100.0,
-                  child: // Hero(
-                      //tag: widget.heroTag,
-                      // child:
-                      Hero(
-                    tag: args.title,
-                    child: Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(args.image),
-                                fit: BoxFit.cover)),
-                        height: 200.0,
-                        width: 200.0),
-                  )),
+                top: 0.0,
+                left: (MediaQuery.of(context).size.width / 2) - 100.0,
+                child: // Hero(
+                    //tag: widget.heroTag,
+                    // child:
+                    Hero(
+                  tag: args.title,
+                  child: Container(
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage(args.image),
+                              fit: BoxFit.cover)),
+                      height: 200.0,
+                      width: 200.0),
+                ),
+              ),
               Positioned(
                 top: 190.0,
                 left: 25.0,
@@ -161,7 +164,8 @@ class DetailsScreen extends StatelessWidget {
                                       children: <Widget>[
                                         Container(
                                           height: 120.0,
-                                          margin: new EdgeInsets.only(left: 36.0),
+                                          margin:
+                                              new EdgeInsets.only(left: 36.0),
                                           decoration: new BoxDecoration(
                                             color: Colors.white,
                                             shape: BoxShape.rectangle,
@@ -180,9 +184,11 @@ class DetailsScreen extends StatelessWidget {
                                         Container(
                                           margin: new EdgeInsets.symmetric(
                                               vertical: 16.0),
-                                          alignment: FractionalOffset.centerLeft,
+                                          alignment:
+                                              FractionalOffset.centerLeft,
                                           child: new CircleAvatar(
-                                            child: ClipOval(child: Image.asset(item.image)),
+                                            child: ClipOval(
+                                                child: Image.asset(item.image)),
                                             radius: 40,
                                           ),
                                         )

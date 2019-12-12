@@ -39,4 +39,8 @@ class Apple {
           'Safely treat most fungal and bacterial diseases with SERENADE Garden. This broad spectrum bio-fungicide uses a patented strain of Bacillus subtilis that is registered for organic use. Best of all, SERENADE is completely non-toxic to honey bees and beneficial insects.',
         ]),
   ];
+
+  Disease getDisease(String code) {
+    return diseases.firstWhere((d) => d.code == code);
+  }
 }

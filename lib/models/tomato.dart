@@ -20,6 +20,7 @@ class Tomato {
         ]),
     new Disease(
         name: 'Tomato yellow leaf curl',
+        code: 'Tomato___Tomato_Yellow_Leaf_Curl_Virus',
         image: 'Assets/img/tomato/Tomatomosaicvirus.jpg',
         desc:
             'Tomato yellow leaf curl is a disease of tomato where infected tomato plants initially show stunted and erect or upright plant growth; plants infected at an early stage of growth will show severe stunting. However, the most diagnostic symptoms are those in leaves. Leaves of infected plants are small and curl upward; and show strong crumpling and interveinal and marginal yellowing. The internodes of infected plants become shortened and, together with the stunted growth, plants often take on a bushy appearance, which is sometimes referred to as bonsai or broccoli-like growth. Flowers formed on infected plants commonly do not develop and fall off (abscise). Fruit production is dramatically reduced, particularly when plants are infected at an early age, and it is not uncommon for losses of 100% to be experienced in fields with heavily infected plants.',
@@ -28,6 +29,7 @@ class Tomato {
         ]),
     new Disease(
         name: 'Tomato target spot',
+        code: 'Tomato___Target_Spot',
         image: 'Assets/img/tomato/Tomatomosaicvirus.jpg',
         desc:
             'The disease starts on the older leaves and spreads upwards. The first signs are irregular-shaped spots (less than 1 mm) with a yellow margin. Some of the spots enlarge up to 10 mm and show characteristics rings, hence the name of "target spot". Spread to all leaflets and to other leaves is rapid, causing the leaves to turn yellow, collapse and die. Spots also occur on the stems. They are long and thin. Small light brown spots with dark margins may also occur on the fruit. The spores are spread by wind-blown rain, and if windy wet weather continues for a few days, spread is fast and plants lose their leaves quickly. The fungus causes plants to lose their leaves; it is a major disease. If infection occurs before the fruit has developed, yields are low. This is a common disease on tomato in Pacific island countries. The disease occurs in the screen house and in the field.',
@@ -44,6 +46,7 @@ class Tomato {
         ]),
     new Disease(
         name: 'Spider mites on tomato plants',
+        code: 'Tomato___Spider_mites Two-spotted_spider_mite',
         image: 'Assets/img/tomato/Tomatomosaicvirus.jpg',
         desc:
             'Spider mites are very little arachnids that are difficult to see without a magnifying glass unless they have multiplied so much as to be in colonies. When spider mites invade your tomato plants, they inflict small wounds on the plants that can eventually harm or kill them. The mites feed on the plant\'s sap, working from the bottom of the plant to the top, and on the underside of the plant\'s leaves. There is no particular season in which the mites are more prevalent; they are active all year. In addition, they change colors depending on their life stage, which makes them even more difficult to find when they are white or blend with the color of your plants. Keeping your tomato plants healthy and prevent infestation of spider mites takes regular attention and vigilant application of various control methods.',
@@ -54,5 +57,9 @@ class Tomato {
           'Spray hot pepper wax onto leaves (underside) to kill the mites. Repeat this application every few days. The spray will not destroy eggs so you must continue to apply to kill all the hatched mites.',
         ]),
   ];
+
+    Disease getDisease(String code) {
+    return diseases.firstWhere((d) => d.code == code);
+  }
 }
 

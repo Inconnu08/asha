@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../models/disease.dart';
-import 'camera.dart';
+import './camera.dart';
+import 'details.dart';
 
 class DiseaseScreen extends StatelessWidget {
   static String routeName = '/disease';
+
+  Disease getDisease(String code, List<Disease> diseases) {
+    return diseases.firstWhere((d) => d.code == code);
+  }
 
   Widget _buildChip(String plant) {
     switch (plant) {
@@ -105,8 +110,20 @@ class DiseaseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final DiseaseArguments args = ModalRoute.of(context).settings.arguments;
-    var details = args.details;
-    print(details);
+    Disease details;
+    if (args.code == null) {
+      details = args.details;
+      print('code is null');
+      print(details);
+    } else {
+      var ds =
+          DetailsScreen.getDiseases(args.code.split(new RegExp('\\s+'))[0]);
+      print(args.code.split(new RegExp('\\s+'))[0]);
+      print('From code');
+      print(ds);
+      details = getDisease(args.code, ds);
+      print(details);
+    }
 
     return Scaffold(
         backgroundColor: Colors.green,
@@ -130,7 +147,7 @@ class DiseaseScreen extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Container(
-              height: MediaQuery.of(context).size.height + 250,
+              height: MediaQuery.of(context).size.height + 420,
               padding: EdgeInsets.all(8.0),
               color: Colors.white,
               child: Column(
@@ -156,7 +173,7 @@ class DiseaseScreen extends StatelessWidget {
                         Text(details.name,
                             style: TextStyle(
                                 fontFamily: 'Montserrat',
-                                fontSize: 26.0,
+                                fontSize: 22.0,
                                 fontWeight: FontWeight.bold)),
                         _buildChip(args.plant),
                         SizedBox(height: 10.0),
@@ -164,11 +181,13 @@ class DiseaseScreen extends StatelessWidget {
                             style: TextStyle(
                                 fontFamily: 'Montserrat', fontSize: 16)),
                         SizedBox(height: 20.0),
-                        Text('Solution',
-                            style: TextStyle(
-                                fontFamily: 'Montserrat',
-                                fontSize: 26.0,
-                                fontWeight: FontWeight.bold)),
+                        Text(
+                          'Solution',
+                          style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontSize: 22.0,
+                              fontWeight: FontWeight.bold),
+                        ),
                         SizedBox(height: 20.0),
                         Container(
                           height: 300,
@@ -176,17 +195,24 @@ class DiseaseScreen extends StatelessWidget {
                               itemCount: details.solution.length,
                               itemBuilder: (ctx, index) {
                                 var item = details.solution[index];
-                                return Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text('${index + 1})  $item',
-                                          style: TextStyle(
-                                              fontFamily: 'Montserrat',
-                                              fontSize: 16)),
-                                    )
-                                  ],
+                                return Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  elevation: 3,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text('${index + 1})  $item',
+                                            style: TextStyle(
+                                                fontFamily: 'Montserrat',
+                                                fontSize: 15)),
+                                      )
+                                    ],
+                                  ),
                                 );
                               }),
                         ),
@@ -229,7 +255,10 @@ class DiseaseScreen extends StatelessWidget {
 
 class DiseaseArguments {
   String plant;
+  String code;
   Disease details;
 
   DiseaseArguments(this.plant, this.details);
+
+  DiseaseArguments.withCode(this.code);
 }
