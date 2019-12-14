@@ -4,6 +4,7 @@ class Apple {
   static var diseases = [
     new Disease(
         name: 'Apple scab',
+        code: 'Apple___Apple_scab',
         image: 'Assets/img/apple/apple_scab.JPG',
         desc:
             'Apple scab is a disease of Malus trees, such as apple trees, caused by the ascomycete fungus Venturia inaequalis. The disease manifests as dull black or grey-brown lesions on the surface of tree leaves, buds or fruits. Lesions may also appear less frequently on the woody tissues of the tree.',
@@ -16,6 +17,7 @@ class Apple {
         ]),
     new Disease(
         name: 'Apple Black rot',
+        code: 'Apple___Black_rot',
         image: 'Assets/img/apple/apple_black rot.JPG',
         desc:
             'Black rot is a disease of apples that infects fruit, leaves and bark caused by the fungus Botryosphaeria obtusa. It can also jump to healthy tissue on pear or quince trees, but is typically a secondary fungus of weak or dead tissues in other plants.',
@@ -26,6 +28,7 @@ class Apple {
         ]),
     new Disease(
         name: 'Apple cedar rust',
+        code: 'Apple___Cedar_apple_rust',
         image: 'Assets/img/apple/apple_cedar_rust.JPG',
         desc:
             'Gymnosporangium juniperi-virginianae is a plant pathogen that causes cedar-apple rust. In virtually any location where apples or crabapples and Eastern red-cedar coexist, cedar apple rust can be a destructive or disfiguring disease on both the apples and cedars.',

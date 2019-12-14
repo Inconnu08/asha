@@ -1,3 +1,4 @@
+import 'package:asha/screens/pick_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -222,7 +223,7 @@ class DiseaseScreen extends StatelessWidget {
                             onTap: () {
                               Navigator.pushNamed(
                                 context,
-                                CameraScreen.routeName,
+                                PickScreen.routeName,
                               );
                             },
                             child: Padding(
